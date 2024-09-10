@@ -1,0 +1,39 @@
+version: "1"
+services:
+  pgsql:
+    image: postgres:14.7
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    networks:
+      - dev-net
+    environment:
+      POSTGRES_USER: aahil
+      POSTGRES_PASSWORD: aahil
+      POSTGRES_DB: furni-pro-360-db
+  adminer:
+    image: adminer
+    restart: always
+    networks:
+      - dev-net
+    ports:
+      - 8080:8080
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    volumes:
+      - ./rabbitmq_data:/var/lib/rabbitmq
+    networks:
+      - dev-net
+networks:
+  dev-net:
+    driver: bridge
+
+
