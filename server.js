@@ -4,6 +4,7 @@ const fastify = require('fastify')({
 const cors = require('@fastify/cors')
 const routes = require('./src/routes/mainRoutes')
 const dotenv = require('dotenv')
+const { syncModels } = require('./src/utils/syncModels')
 dotenv.config()
 
 fastify.register(cors,{
@@ -15,6 +16,8 @@ fastify.register(cors,{
 routes.forEach(route=>{
     fastify.route(route)
 });
+
+syncModels();
 
 fastify.listen({
     port: process.env.SERVER_PORT,
