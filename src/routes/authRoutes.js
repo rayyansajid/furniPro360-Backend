@@ -6,13 +6,14 @@ const authRoutes=[
     {
         url:'/register',
         method:'POST',
+        handler: userController.registerController,
         preHandler: authValidator.registerValidator,
-        handler: userController.registerController
     },
     {
         url:'/login',
         method:'POST',
-        handler: userController.loginController
+        handler: userController.loginController,
+        preHandler: authValidator.loginValidator
     }
 ]
 

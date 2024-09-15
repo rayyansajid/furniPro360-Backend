@@ -1,10 +1,11 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../../config/pgSqlConfig");
 
-const user = sequelize.define("user", {
+const User = sequelize.define("user", {
   user_id: {
     type: DataTypes.UUID,
     primaryKey: true,
+    defaultValue: DataTypes.UUIDV4,
   },
   name: {
     type: DataTypes.STRING,
@@ -12,11 +13,11 @@ const user = sequelize.define("user", {
   },
   phone: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   address: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   gender: {
     type: DataTypes.ENUM("male", "female"),
@@ -31,18 +32,12 @@ const user = sequelize.define("user", {
   email: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true,
+    //unique: true,
   },
-  created_at: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW,
-    allowNull: false,
-  },
-  updated_at: {
-    type: DataTypes.DATE,
-    defaultValue: DataTypes.NOW,
-    allowNull: false,
-  },
+  password:{
+    type: DataTypes.STRING,
+    allowNull: false
+  }
 });
 
-module.exports = user;
+module.exports = User;

@@ -1,10 +1,11 @@
 const { DataTypes } = require('sequelize')
 const {sequelize} = require('../../config/pgSqlConfig');
 
-const product= sequelize.define('product',{
+const Product= sequelize.define('product',{
     product_id:{
         primaryKey:true,
-        type: DataTypes.UUID
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
     },
     product_name:{
         type: DataTypes.STRING,
@@ -55,4 +56,4 @@ const product= sequelize.define('product',{
 
 
 
-module.exports= product;
+module.exports= Product;

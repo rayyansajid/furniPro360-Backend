@@ -2,10 +2,11 @@ const { DataTypes } = require('sequelize')
 const {sequelize} = require('../../config/pgSqlConfig');
 const user = require('./user');
 
-const order= sequelize.define('order',{
+const Order= sequelize.define('order',{
     order_id:{
         type: DataTypes.UUID,
-        primaryKey:true
+        primaryKey:true,
+        defaultValue: DataTypes.UUIDV4,
     },
     customer_id:{
         type: DataTypes.UUID,
@@ -28,4 +29,4 @@ const order= sequelize.define('order',{
     }
 })
 
-module.exports=order;
+module.exports=Order;

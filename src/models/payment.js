@@ -2,10 +2,11 @@ const { DataTypes } = require('sequelize')
 const {sequelize} = require('../../config/pgSqlConfig');
 const order = require('./order');
 
-const payment= sequelize.define('payment',{
+const Payment= sequelize.define('payment',{
     payment_id:{
         type: DataTypes.UUID,
         primaryKey: true,
+        defaultValue: DataTypes.UUIDV4,
     },
     payment_status:{
         type: DataTypes.ENUM('paid','pending')
@@ -31,4 +32,4 @@ const payment= sequelize.define('payment',{
 payment.hasOne(order,{foreignKey:'order_id'});
 order.belongsTo(payment,{foreignKey:'order_id'})
 
-module.exports=payment;
+module.exports=Payment;
