@@ -1,8 +1,15 @@
-const { Sequelize } =require("sequelize");
-const dotenv= require('dotenv')
-dotenv.config()
+const { Sequelize } = require("sequelize");
+const dotenv= require('dotenv');
+dotenv.config();
 
-const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+var database = process.env.DB_NAME;
+var username = process.env.DB_USERNAME;
+var password = process.env.DB_PASSWORD;
+
+const sequelize = new Sequelize(
+    database,
+    username,
+    password, {
     port: process.env.DB_PORT,
     host: process.env.DB_HOST,
     dialect: process.env.DB_DIALECT,

@@ -5,12 +5,12 @@ services:
     volumes:
       - ./db:/var/lib/postgresql/data
     ports:
-      - 5432:5432
+      - 7778:5432
     networks:
       - dev-net
     environment:
-      POSTGRES_USER: aahil
-      POSTGRES_PASSWORD: aahil
+      POSTGRES_USER: rayyan
+      POSTGRES_PASSWORD: rayyan
       POSTGRES_DB: furni-pro-360-db
   adminer:
     image: adminer

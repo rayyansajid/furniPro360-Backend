@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize')
 const {sequelize} = require('../../config/pgSqlConfig');
 const user = require('./user');
 
-const Order= sequelize.define('order',{
+const Order = sequelize.define('order',{
     order_id:{
         type: DataTypes.UUID,
         primaryKey:true,
@@ -23,7 +23,8 @@ const Order= sequelize.define('order',{
         type: DataTypes.ENUM('delivered','shipped','processing'),
         defaultValue: 'processing'
     },
-    products:{ //here, product ids will be there
+    products:{ 
+        //here, product ids will be there
         type: DataTypes.JSONB,
         allowNull: false
     }
