@@ -1,15 +1,19 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../../config/pgSqlConfig");
 
-const User = sequelize.define("user", {
+const User = sequelize.define("User", {
   user_id: {
     type: DataTypes.UUID,
     primaryKey: true,
     defaultValue: DataTypes.UUIDV4,
   },
-  name: {
+  firstName: {
     type: DataTypes.STRING,
     allowNull: false,
+  },
+  lastname:{
+    type: DataTypes.STRING,
+    allowNull: true,
   },
   phone: {
     type: DataTypes.STRING,

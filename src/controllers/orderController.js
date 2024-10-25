@@ -8,7 +8,15 @@ const getOrderController = async (req, res) => {
         ...result
     })
 }
+const getOrderByProductController = async (req, res) => {
+    const result = await orderService.getOrdersByProduct(req.params.id);
+    res.status(result.status).send({
+        ...result
+    })
+}
 
 module.exports={
     getOrderController,
+    getOrderByProductController,
+    
 }

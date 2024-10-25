@@ -9,6 +9,11 @@ const authRoutes=[
         method:'GET',
         handler: orderController.getOrderController
     },
+    {
+        url:'/orderByProd/:id',
+        method:'GET',
+        handler: orderController.getOrderByProductController
+    }
 ]
 
 module.exports= authRoutes;

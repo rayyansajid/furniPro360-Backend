@@ -1,23 +1,16 @@
 const { DataTypes } = require('sequelize')
 const {sequelize} = require('../../config/pgSqlConfig');
+const Order = require('./order');
+// const OrderProduct = require('./orderproduct');
 
-const Product= sequelize.define('product',{
-    product_id:{
-        primaryKey:true,
+const Product= sequelize.define('Product',{
+    id:{
+        primaryKey: true,
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
     },
-    product_name:{
+    name:{
         type: DataTypes.STRING,
-        allowNull: false
-    },
-    price:{
-        type: DataTypes.FLOAT,
-        allowNull: false
-    },
-    currency:{
-        type: DataTypes.ENUM('USD','PKR','INR'),
-        defaultValue:'PKR',
         allowNull: false
     },
     description:{
@@ -29,21 +22,38 @@ const Product= sequelize.define('product',{
         defaultValue:'chair',
         allowNull: false
     },
+    price:{
+        type: DataTypes.FLOAT,
+        allowNull: false
+    },
+    material:{
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    dimensions:{
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
     quantity:{
         type: DataTypes.INTEGER,
         allowNull: false,
         defaultValue:0
     },
-    created_at:{
-        type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW,
+    currency:{
+        type: DataTypes.ENUM('USD','PKR','INR'),
+        defaultValue:'PKR',
         allowNull: false
-    },
-    updated_at:{
-        type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW,
-        allowNull: false
-    },
+     },
+    // created_at:{
+    //     type: DataTypes.DATE,
+    //     defaultValue: DataTypes.NOW,
+    //     allowNull: false
+    // },
+    // updated_at:{
+    //     type: DataTypes.DATE,
+    //     defaultValue: DataTypes.NOW,
+    //     allowNull: false
+    // },
     discount:{
         type: DataTypes.FLOAT,
         defaultValue:0,
@@ -55,5 +65,7 @@ const Product= sequelize.define('product',{
 });
 
 
+// Define the many-to-many relationship
+// Product.belongsToMany(Order, { through: 'OrderProduct', foreignKey: 'product_id' });
 
-module.exports= Product;
+module.exports=Product;
